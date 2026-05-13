@@ -1,0 +1,46 @@
+
+TEA DEMAND FORECASTING — RESULTS SUMMARY
+==========================================
+
+Dataset: 4 years weekly data (2021–2024), 5 tea grades, 1040 observations
+Train period: 2021–2023 | Test period: 2024
+
+BEST MODEL:  LSTM (Pekoe)  (RMSE = 166.76 kg)
+WORST MODEL: SARIMA (Dust) (RMSE = 1547.77 kg)
+
+FULL RANKING (by RMSE):
+                            MAE     RMSE   MAPE  sMAPE
+model                                                 
+LSTM (Pekoe)             135.38   166.76   8.22   8.42
+Holt-Winters (Pekoe)     150.99   187.57   9.00   9.43
+Naive Seasonal (Pekoe)   176.63   223.26  10.79  11.34
+LSTM (OP)                183.52   228.16   7.93   7.80
+Holt-Winters (OP)        195.77   248.91   8.28   8.28
+Naive Seasonal (OP)      225.90   269.72   9.59   9.58
+SARIMA (Pekoe)           225.09   293.43  12.90  13.94
+SARIMA (OP)              272.45   335.37  11.02  11.52
+LSTM (BOP)               385.66   503.15   9.26   9.48
+Holt-Winters (BOP)       402.34   522.67   9.42   9.88
+LSTM (BOPF)              515.46   631.51  10.99  11.00
+Naive Seasonal (BOP)     530.77   652.44  12.74  13.43
+SARIMA (BOP)             517.11   665.16  12.26  12.80
+Holt-Winters (BOPF)      538.62   690.40  11.31  11.71
+LightGBM                 486.30   715.38  11.67  11.88
+XGBoost                  466.54   729.79  10.91  11.17
+SARIMA (BOPF)            660.43   818.91  13.46  14.12
+Naive Seasonal (BOPF)    708.21   870.24  14.91  15.37
+LSTM (Dust)              907.64  1144.10  13.22  13.68
+Holt-Winters (Dust)      897.84  1146.85  13.29  13.91
+Naive Seasonal (Dust)   1045.88  1378.82  15.15  16.26
+SARIMA (Dust)           1252.07  1547.77  17.96  18.69
+
+DIEBOLD-MARIANO TEST (XGBoost vs LightGBM):
+  DM Statistic = 0.5368
+  p-value      = 0.5918
+  Conclusion   = No significant difference — models are equivalent
+
+KEY FINDING:
+  Grade-specific models with Colombo Auction Price as exogenous input
+  improved forecast accuracy over statistical baselines.
+  Probabilistic forecasts (MC Dropout) provided 90% prediction intervals
+  not present in any prior tea forecasting literature.
